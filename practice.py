@@ -1,6 +1,6 @@
 print('Hello world!')
 def createTable(num_rows, num_cols):
-    with open('output.txt','a') as out:
+    with open('output.tex','a') as out:
 
 
         #beginning of a table environment declaration
@@ -17,4 +17,4 @@ def createTable(num_rows, num_cols):
         out.write('\\end{tabular}\n')
         out.write('\\end{table}')
 
-createTable(3)
+createTable(5,3)
