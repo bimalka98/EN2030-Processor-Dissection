@@ -1,4 +1,4 @@
-print('Hello world!')
+print('Generating the table...')
 def createTable(num_rows, num_cols):
     with open('output.tex','a') as out:
 
@@ -6,7 +6,7 @@ def createTable(num_rows, num_cols):
         #beginning of a table environment declaration
 
         out.write('\\begin{table}[!h]\n')
-        out.write('\\begin{tabular}{' +'c '*num_cols+ '}\n')
+        out.write('\t\\begin{tabular}{' +'c '*num_cols+ '}\n')
 
         #table CONTENT
         for row in range(num_rows):
@@ -14,7 +14,7 @@ def createTable(num_rows, num_cols):
 
 
         #end of a table environment
-        out.write('\\end{tabular}\n')
+        out.write('\t\\end{tabular}\n')
         out.write('\\end{table}')
 
 createTable(5,3)
