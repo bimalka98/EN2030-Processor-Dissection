@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}Instruction Set Architecture of the Processor}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Instruction Set}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Instruction classes and Instruction Format}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Micro-Architecture (Data Path and the Controller)}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Arm Cortex-R5 Processor}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Intel Core i3-8300 Processor}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}ALU functions}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Arm Cortex-R5 Processor}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Intel Core i3-8300 Processor}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Cache Memory and Memory Interfacing}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Intel Core i3-8300 Processor}{6}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Memory Hierarchy}{6}{subsubsection.4.1.1}%
+\contentsline {paragraph}{Cache Memory}{6}{section*.3}%
+\contentsline {paragraph}{Primary/Physical/Main Memory}{6}{section*.4}%
+\contentsline {subsubsection}{\numberline {4.1.2}Translation-Lookaside Buffers(TLBs)}{6}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Load and Store Buffers}{7}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Arm Cortex-R5 Processor}{7}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Memory Hierarchy}{7}{subsubsection.4.2.1}%
+\contentsline {paragraph}{Cache Memory}{7}{section*.5}%
+\contentsline {paragraph}{Tightly-Coupled Memories (TCMs)}{7}{section*.6}%
+\contentsline {subsubsection}{\numberline {4.2.2}Memory Protection Unit(MPU)}{7}{subsubsection.4.2.2}%
+\contentsline {section}{\numberline {5}Timing related to Memory}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Intel Core i3-8300 Processor}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Arm Cortex-R5 Processor}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Comaprison}{9}{section.6}%
+\contentsline {section}{Bibliography}{9}{section*.7}%

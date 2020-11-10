@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Instruction Set Architecture of the Processor}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Instruction Set}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Instruction classes and Instruction Format}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Micro-Architecture \(Data Path and the Controller\)}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Arm Cortex-R5 Processor}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Intel Core i3-8300 Processor}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{ALU functions}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Arm Cortex-R5 Processor}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Intel Core i3-8300 Processor}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Cache Memory and Memory Interfacing}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Intel Core i3-8300 Processor}{section.4}% 11
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Memory Hierarchy}{subsection.4.1}% 12
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Translation-Lookaside Buffers\(TLBs\)}{subsection.4.1}% 13
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Load and Store Buffers}{subsection.4.1}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Arm Cortex-R5 Processor}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Memory Hierarchy}{subsection.4.2}% 16
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Memory Protection Unit\(MPU\)}{subsection.4.2}% 17
+\BOOKMARK [1][-]{section.5}{Timing related to Memory}{}% 18
+\BOOKMARK [2][-]{subsection.5.1}{Intel Core i3-8300 Processor}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.2}{Arm Cortex-R5 Processor}{section.5}% 20
+\BOOKMARK [1][-]{section.6}{Comaprison}{}% 21
+\BOOKMARK [1][-]{section*.7}{Bibliography}{}% 22

@@ -1,0 +1,63 @@
+
+\section{Introduction}
+\subsection{Intel Core i3-8300}
+Core i3-8300 is a desktop processor released in Q2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 TDP.
+
+\section{Instruction Set Architecture}
+\subsection{i3-8300: ISA}
+Intel i3-8300 utilizes the x86-64 ISA developed by Intel. It is a 64-bit extension to the x86 architecture. This architecture has 64-bit wide registers, which support 32-bit operations as well. There are 16 general-purpose registers and several special purpose registers including RIP, RFLAGS, XMM \& MMX registers. RFLAGS register is a 64-bit register. Common flags include Carry(CF), Parity(PF), Zero(ZF) and Overflow(OF). The instructions can be 1 to 15 bytes long. The source operands can be stored in registers, memory or instruction itself (immediate), while registers or memory can be used as the destination operands. All operands of an instruction cannot be in memory simultaneously.\\
+\textbf{Addressing modes supported}\\
+1. \textbf{Immediate} - \$immediate operand\\
+2. \textbf{Register} - register\\
+3. \textbf{Memory direct} – memory address\\
+4. \textbf{Memory indirect} – (register)\\
+5. \textbf{Base displacement} – imm(register)\\
+6. \textbf{Scaled index} – (reg1,reg2,scale)\\
+memory address = register1 + register2*scale\\
+7. \textbf{Scaled index with displacement} – imm(reg1,reg2,scale)\\
+memory address = immediate value + register1 + register2*scale\\
+\textbf{Some of the commonly used instructions in x86-64}
+\begin{tabular}{l l}
+NOP & No operation\\
+MOV & Move to/from mem/reg\\
+XCHG & Exchange\\
+BSWAP & Byte swap\\
+PUSH/POP & Stack usage\\
+ADD/ADC & Add/with carry\\
+SUB/SBC & Subtract/with carry\\
+MUL/IMUL & Multiply/unsigned\\
+DIV/IDIV & Divide/unsigned\\
+INC/DEC & Increment/decrement\\
+NEG & Negate\\
+AND/OR/XOR/NOT & Bitwise operations\\
+SHR/SAR & Shift right logical/arithmetic\\
+SHL/SAL & Shift left logical/arithmetic\\
+CMP & Compare\\
+JMP & Unconditional jump\\
+JE/JNE/JC/JNC & Jump if equal/ not equal/
+\\&carry/ not carry\\
+CALL/RET & Call subroutine/ return\\
+LOOP & Loops\\
+\end{tabular}
+\subsection{i3-8300: Instruction Classes and Instruction Format}
+There are four classes of instructions in the x86-64 architecture: Data transfer instructions, Arithmetic and logic operations, Control flow instructions and Privileged (System) instructions.\\
+\textbf{Data transfer instructions}\\
+Data transfer between memory and registers is carried out by the mov[size] src, dst instruction. The size of the moved data is given by the suffix of the instruction which can be b(byte), w(word), d(double word) or q(quad word). There are few extended versions of mov instruction, which support features like zero-extension or sign extension during transfer.\\
+\textbf{ALU operations}\\
+Opcode[size] src2, src1/dst ;\\
+src1 = operation(src1,src2) or dst = operation(src2)\\
+Load Effective Address (lea) instruction can be used to utilize the address calculating hardware for normal arithmetic operations.\\
+\textbf{Control flow operations}\\
+Control flow instructions include unconditional and conditional branches and subroutine calls.\\
+Unconditional branch: jmp\\
+Conditional branch: je, jne, jl, jge\\
+Subroutine calls: call, ret\\
+\textbf{Privileged instructions}\\
+These instructions are only accessible to the operating system and privileged software.\\
+\textbf{Instruction format}\\
+\textbf{Instruction prefixes}\\
+Any of the four instruction prefixes can be used to modify the instruction for extended functionality.\\
+1.	Lock and repeat prefixes, BND prefix\\
+2.	Segment override prefixes(CS, SS, DS, ES, FS, GS), Branch hints\\
+3.	Operand size override prefixes\\
+4.	Address size override prefixes\\
