@@ -19,4 +19,9 @@
 \BOOKMARK [2][-]{subsection.5.1}{Intel Core i3-8300 Processor}{section.5}% 19
 \BOOKMARK [2][-]{subsection.5.2}{Arm Cortex-R5 Processor}{section.5}% 20
 \BOOKMARK [1][-]{section.6}{Comaprison}{}% 21
-\BOOKMARK [1][-]{section*.7}{Bibliography}{}% 22
+\BOOKMARK [2][-]{subsection.6.1}{Instruction Set Architecture of the Processor}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Micro-Architecture \(Data Path and the Controller\)}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.3}{ALU functions}{section.6}% 24
+\BOOKMARK [2][-]{subsection.6.4}{Cache Memory and Memory Interfacing}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.5}{Timing related to Memory}{section.6}% 26
+\BOOKMARK [1][-]{section*.7}{Bibliography}{}% 27

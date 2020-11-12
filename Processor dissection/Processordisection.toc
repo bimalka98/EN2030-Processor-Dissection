@@ -11,16 +11,21 @@
 \contentsline {subsection}{\numberline {4.1}Intel Core i3-8300 Processor}{5}{subsection.4.1}%
 \contentsline {subsubsection}{\numberline {4.1.1}Memory Hierarchy}{5}{subsubsection.4.1.1}%
 \contentsline {paragraph}{Cache Memory}{5}{section*.3}%
-\contentsline {paragraph}{Primary/Physical/Main Memory}{5}{section*.4}%
-\contentsline {subsubsection}{\numberline {4.1.2}Translation-Lookaside Buffers(TLBs)}{5}{subsubsection.4.1.2}%
+\contentsline {paragraph}{Primary/Physical/Main Memory}{6}{section*.4}%
+\contentsline {subsubsection}{\numberline {4.1.2}Translation-Lookaside Buffers(TLBs)}{6}{subsubsection.4.1.2}%
 \contentsline {subsubsection}{\numberline {4.1.3}Store Buffers}{6}{subsubsection.4.1.3}%
 \contentsline {subsection}{\numberline {4.2}Arm Cortex-R5 Processor}{6}{subsection.4.2}%
 \contentsline {subsubsection}{\numberline {4.2.1}Memory Hierarchy}{6}{subsubsection.4.2.1}%
 \contentsline {paragraph}{Cache Memory}{6}{section*.5}%
-\contentsline {paragraph}{Tightly-Coupled Memories (TCMs)}{6}{section*.6}%
+\contentsline {paragraph}{Tightly-Coupled Memories (TCMs)}{7}{section*.6}%
 \contentsline {subsubsection}{\numberline {4.2.2}Memory Protection Unit(MPU)}{7}{subsubsection.4.2.2}%
 \contentsline {section}{\numberline {5}Timing related to Memory}{7}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Intel Core i3-8300 Processor}{7}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Arm Cortex-R5 Processor}{7}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Comaprison}{7}{section.6}%
-\contentsline {section}{Bibliography}{7}{section*.7}%
+\contentsline {section}{\numberline {6}Comaprison}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Instruction Set Architecture of the Processor}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Micro-Architecture (Data Path and the Controller)}{8}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}ALU functions}{8}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Cache Memory and Memory Interfacing}{8}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Timing related to Memory}{8}{subsection.6.5}%
+\contentsline {section}{Bibliography}{8}{section*.7}%

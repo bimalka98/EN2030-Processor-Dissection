@@ -123,9 +123,21 @@ The fetching and decoding of the instructions are happening separately. Fetched 
 
 The arithmetic and logic unit is abbreviated as ALU in the computer organization. ALU is responsible for all arithmetic and logical operations. It is implemented by using digital logic for the respective set of operations that are required.
 
+ \begin{figure}[!h]
+	\centering
+	\subfigure[Core-i3 8300 Processor's ALU]
+	{ \includegraphics[scale=0.5]{figures/i3alu}
+		\label{i3alu}
+	}\hspace{1.5cm}
+	\subfigure[Cortex-R5 processors's ALU]
+	{ \includegraphics[scale=0.5]{figures/r5alu}
+		\label{r5alu}
+	}
+	\caption{ALUs of the two processors}
+\end{figure}
 
 \subsection{Arm Cortex-R5 Processor}
-In the eight-stage pipeline, an ALU performs its task. It two data paths that are directly connected with 32 bits registers. Cortex-R5 is well designed for digital signal processing and efficiently performed floating-point number calculations. Four flags stand for,
+In the eight-stage pipeline, an ALU performs its task. It two data paths that are directly connected with 32 bits registers. Cortex-R5 is well designed for digital signal processing and efficiently performed floating-point number calculations.(figure \ref{r5alu}) Four flags stand for,
 
 \begin{itemize}
 	\item 	N - Negative
@@ -136,7 +148,7 @@ In the eight-stage pipeline, an ALU performs its task. It two data paths that ar
 
 \subsection{Intel Core i3-8300 Processor}
 
-Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU should be capable of manipulating these numbers in it. This is implemented by using digital logic. Two of them are embedded in a processor for,
+Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU should be capable of manipulating these numbers in it. This is implemented by using digital logic.(figure \ref{i3alu}) Two of them are embedded in a processor for,
 \begin{itemize}
 	\item 	Physical address calculations
 	\item	Mathematical operations
@@ -144,6 +156,9 @@ Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU shou
 \end{itemize}
 
 Core i3 processors are widely used in desktop and laptop general-purpose computers. The clock frequency is around 3.7GHz so, Its ALU is running at a higher speed than its clock rate.
+
+
+
 
 \vspace{1cm}\hrule
 \section{Cache Memory and Memory Interfacing}
@@ -231,7 +246,7 @@ Each core of an Intel Core-i3 processor consists of a Store Buffer which is loca
 
 \subsubsection{Memory Protection Unit(MPU)}
 
-In a multitasking system, the task currently being executed must not affect the system resources(code, data) of the other tasks. This protection mechanism is controlled by the Operating System(OS), typically with the help of both hardware and software. In ARM Cortex-R series processors which implement the ARM \textit{\textbf{Protected Memory System Architecture}}(PMSA) this feature is provided by a dedicated hardware called \textit{Memory Protection Unit}(MPU) located inside the \textit{Level 1 Memory System}(shown in figure \ref{r5core}) of the cores. Using the MPU,  memory can be partitioned into \textbf{\textit{zero, 12 or 16 regions}} and protection attributes can be set for each region independently. The size of such a region is specified by a 5-bit value which encodes a range of values from 32-Bytes(cache-line length) to 4GB.
+In a multitasking system, the task currently being executed must not affect the system resources(code, data) of the other tasks. This protection mechanism is controlled by the Operating System(OS), typically with the help of both hardware and software. In ARM Cortex-R series processors which implement the ARM \textit{\textbf{Protected Memory System Architecture}}(PMSA) this feature is provided by a dedicated hardware called \textit{Memory Protection Unit}(MPU)\cite{crspg} located inside the \textit{Level 1 Memory System}(shown in figure \ref{r5core}) of the cores. Using the MPU,  memory can be partitioned into \textbf{\textit{zero, 12 or 16 regions}} and protection attributes can be set for each region independently. The size of such a region is specified by a 5-bit value which encodes a range of values from 32-Bytes(cache-line length) to 4GB.\cite{crtrm}
 
 
 
@@ -273,6 +288,7 @@ In coffee lake $\mu$architecture the processor is divided into several \textbf{\
 \end{table}
 
 \subsection{Arm Cortex-R5 Processor} 
+%1.4 Interfaces
 One Thumb instruction can be fetched on each cycle, whereas each
 32-bit ARM instruction requires two clock cycles per fetch.
 
@@ -284,6 +300,7 @@ CLKIN (Input) Master processor clock.
 
 2.3.3 Clocking
 
+Advanced Microcontroller Bus Architecture (AMBA) AXI and AHB protocols.
 
 
 
@@ -302,7 +319,11 @@ CLKIN (Input) Master processor clock.
 	\caption{}
 \end{table}
 
-
+\subsection{Instruction Set Architecture of the Processor}
+\subsection{Micro-Architecture (Data Path and the Controller)}
+\subsection{ALU functions}
+\subsection{Cache Memory and Memory Interfacing}
+\subsection{Timing related to Memory}
 \vspace{1cm}\hrule
 \bibliographystyle{plain}
 \footnotesize
