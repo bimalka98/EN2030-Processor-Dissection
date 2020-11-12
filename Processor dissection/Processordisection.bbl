@@ -1,3 +1,31 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{crspg}
+Arm cortex-r series programmer's guide.
+\newblock \url{https://developer.arm.com/documentation/den0042/a/}.
+
+\bibitem{Coffee}
+Coffee {Lake} - {Microarchitectures} - {Intel} - {WikiChip}.
+\newblock
+  \url{https://en.wikichip.org/wiki/intel/microarchitectures/coffee_lake}.
+
+\bibitem{crtrm}
+Cortex-r5 technical reference manual.
+\newblock \url{https://developer.arm.com/documentation/ddi0460/d}.
+
+\bibitem{iaorm}
+Intel® 64 and {IA}-32 {Architectures} {Optimization} {Reference} {Manual}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/develop/download/intel-64-and-ia-32-architectures-optimization-reference-manual.html}.
+
+\bibitem{Skylake}
+Skylake (client) - {Microarchitectures} - {Intel} - {WikiChip}.
+\newblock
+  \url{https://en.wikichip.org/wiki/intel/microarchitectures/skylake_(client)}.
+
+\bibitem{smartcache}
+Software {Techniques} for {Shared}-{Cache} {Multi}-{Core} {Systems}.
+\newblock
+  \url{https://www.intel.com/content/www/us/en/develop/articles/software-techniques-for-shared-cache-multi-core-systems.html}.
 
 \end{thebibliography}

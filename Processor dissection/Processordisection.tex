@@ -153,7 +153,7 @@ Core i3 processors are widely used in desktop and laptop general-purpose compute
 \subsubsection{Memory Hierarchy}
 
 \paragraph{Cache Memory}
-Intel core i3-8300 processor's cache memory is organized using \textbf{\textit{Intel's Smart Cache}} technology. That is the Last Level Cache(LLC) is shared across all cores while the lower level caches are separately allocated for each core such that those  are used by the respective cores privately. The shared cache allows any of the four cores to access the entire storage area of the shared cache(\textit{in this case 8MiB LLC}) and therefore not limited to a dedicated portion of it. This leads to a number of benefits such as, increased resource utilization through providing all of the shared cache to the active cores if the other cores are in the idle mood, reduced front-side bus traffic since shared data can be fetched directly from the LLC(\textit{if available}) into the cores  rather than going all the way to the primary memory.\\
+Intel core i3-8300 processor's cache memory is organized using \textbf{\textit{Intel's Smart Cache}} technology. That is the Last Level Cache(LLC) is shared across all cores while the lower level caches are separately allocated for each core such that those  are used by the respective cores privately. The shared cache allows any of the four cores to access the entire storage area of the shared cache(\textit{in this case 8MiB LLC}) and therefore not limited to a dedicated portion of it. This leads to a number of benefits such as, increased resource utilization through providing all of the shared cache to the active cores if the other cores are in the idle mood, reduced front-side bus traffic since shared data can be fetched directly from the LLC(\textit{if available}) into the cores  rather than going all the way to the primary memory\cite{smartcache}.\\
 
  Following table summarizes the properties of each cache. Refer the \textit{memory subsystem} of the figure \ref{intelcore} to identify the organization of core-private caches while shared cache(LLC/L3\$) is depicted inside the \textit{Ring} of the figure \ref{intelsoc}.\\
 
@@ -172,7 +172,7 @@ D-\textit{Data}, I-\textit{Instruction}, WB-\textit{Write-back}, WT-\textit{Writ
 		L3 U, S Cache/LLC&Up to 16-way SA&8 MiB&8192&64 B&WB\\
 		\hline\hline
 	\end{tabular}
-	\caption{Cache Memory Organization in Intel core i3-8300 Processors}
+	\caption{Cache Memory Organization in Intel core i3-8300 Processors\cite{Coffee}}
 \end{table}
 
 \paragraph{Primary/Physical/Main Memory}
@@ -226,7 +226,7 @@ Each core of an Intel Core-i3 processor consists of a Store Buffer which is loca
 	\includegraphics[scale= 0.315]{figures/tcm}
 	\caption{TCMs in Cortex-R5} \label{tcm}
 \end{wrapfigure}
-\paragraph{Tightly-Coupled Memories (TCMs)}  \textit{Unpredictable access time} at a processor request is a common issue related to the cache memories because, access times at a \textit{cache hit} and a \textit{cache miss} are different in nature. Tightly-Coupled Memories (TCMs) address this issue and provide \textbf{\textit{low-latency}} memory access and \textbf{\textit{consistent access time}} which is ideal for storing time-critical routines. Cortex-R5 processor can be configured to have one or two TCMs(ATCM \& BTCM) which are located separately from the processor. They may contain any mix of Data and Instructions and can have capacities upto 8MB. These TCMs can be implemented as SRAMs or ROMs and typically fetch data in a single cycle. ATCM has a single port while BTCM has two ports which can be accessed simultaneously as it is implemented as two banks of RAMs. TCMs can be loaded via the \textit{AXI slave port} at Level 2 Interface(shown in figure \ref{r5core}) and processor can fetch instructions from the TCMs directly without going all the way to an external memory. Although the TCM is implemented as a separate RAM it does not have a dedicated \textit{address space}(set of addresses) and it simply \textbf{\textit{uses a portion of the 32-bit address space}} which is used by the processor at normal operation. Therefore when these TCMs are enabled anything at the same address space(as that is allocated for the TCMs) in the external memory is not accessible to the processor.
+\paragraph{Tightly-Coupled Memories (TCMs)}  \textit{Unpredictable access time} at a processor request is a common issue related to the cache memories because, access times at a \textit{cache hit} and a \textit{cache miss} are different in nature. Tightly-Coupled Memories (TCMs) address this issue and provide \textbf{\textit{low-latency}} memory access and \textbf{\textit{consistent access time}} which is ideal for storing time-critical routines\cite{crspg}. Cortex-R5 processor can be configured to have one or two TCMs(ATCM \& BTCM) which are located separately from the processor. They may contain any mix of Data and Instructions and can have capacities upto 8MB. These TCMs can be implemented as SRAMs or ROMs and typically fetch data in a single cycle. ATCM has a single port while BTCM has two ports which can be accessed simultaneously as it is implemented as two banks of RAMs. TCMs can be loaded via the \textit{AXI slave port} at Level 2 Interface(shown in figure \ref{r5core}) and processor can fetch instructions from the TCMs directly without going all the way to an external memory. Although the TCM is implemented as a separate RAM it does not have a dedicated \textit{address space}(set of addresses) and it simply \textbf{\textit{uses a portion of the 32-bit address space}} which is used by the processor at normal operation. Therefore when these TCMs are enabled anything at the same address space(as that is allocated for the TCMs) in the external memory is not accessible to the processor\cite{crtrm}.
 
 
 \subsubsection{Memory Protection Unit(MPU)}
@@ -254,9 +254,25 @@ In a multitasking system, the task currently being executed must not affect the 
 \vspace{1cm}\hrule
 \section{Timing related to Memory}
 
-\subsection{Intel Core i3-8300 Processor}%MAHAWELA P.D
+\subsection{Intel Core i3-8300 Processor}
 %18.7 COUNTING CLOCKS
-\subsection{Arm Cortex-R5 Processor} % RAVINDU NAGASINGHE
+In coffee lake $\mu$architecture the processor is divided into several \textbf{\textit{Clock Domains}} where each part maintains a different clock frequency which is applicable only to that part. All of these frequencies are some multiple of what is known as \textit{Base Clock} which acts only as a reference for other clock domains\cite{Skylake} . Cache memories, their related clock domains, latency and bandwidths are as follows. In addition to that system's DRAMs are operated under the \textit{Memory clock} domain and are capable of transferring data at the rate of 8 bytes per cycle per channel\cite{Coffee}(Core i3-8300 Processor is dual channel as mentioned previously).
+
+ \begin{table}[!h]
+	\centering
+	\begin{tabular}{l| c|c|c|c }
+		Cache &Clock Domain&Fastest Latency&Peak Bandwidth&Sustained Bandwidth\\
+		&&(cycles)&(bytes/cyc)&(bytes/cyc)\\\hline
+		L1 I Cache&Core Clock &N/A&N/A&N/A\\
+		L1 D Cache&Core Clock &4&96&81\\
+		L2 U cache&Core Clock &12&64&29\\
+		L3 U, S Cache/LLC&Ring Clock&44&32&18\\
+		\hline\hline
+	\end{tabular}
+	\caption{Timing Related to Cache Memory in Intel core i3-8300 Processors\cite{iaorm}}
+\end{table}
+
+\subsection{Arm Cortex-R5 Processor} 
 One Thumb instruction can be fetched on each cycle, whereas each
 32-bit ARM instruction requires two clock cycles per fetch.
 
@@ -271,23 +287,25 @@ CLKIN (Input) Master processor clock.
 
 
 
-\pagebreak
+\vspace{1cm}\hrule
 \section{Comaprison}
 \begin{table}[!h]
 	\centering
 	\begin{tabular}{l ||c| c }
 		\textbf{Feature} &\textbf{ARM cortex-R5}&\textbf{Intel Core-i3-8300}\\\hline
 		ISA &RISC&CISC\\
-		Micro Architecture &&Coffee Lake($8^{th}$ Gen: Intel)\\
+		%Micro Architecture &&Coffee Lake($8^{th}$ Gen: Intel)\\
 		Memory Sys: Archi:&Protected Mem: Sys: Archi:(PMSA)&Virtual Mem: Sys: Archi:(VMSA)\\
-		Typical clock speed&600 MHz on 40 nm&\\
+		%Typical clock speed&600 MHz on 40 nm&\\
 		\hline\hline
 	\end{tabular}
 	\caption{}
 \end{table}
 
 
+\vspace{1cm}\hrule
 \bibliographystyle{plain}
+\footnotesize
 \bibliography{reference}
 
 \end{document}
