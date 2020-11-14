@@ -23,9 +23,4 @@
 \contentsline {subsection}{\numberline {5.1}Intel Core i3-8300 Processor}{7}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Arm Cortex-R5 Processor}{7}{subsection.5.2}%
 \contentsline {section}{\numberline {6}Comaprison}{8}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Instruction Set Architecture of the Processor}{8}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Micro-Architecture (Data Path and the Controller)}{8}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}ALU functions}{8}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Cache Memory and Memory Interfacing}{8}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Timing related to Memory}{8}{subsection.6.5}%
 \contentsline {section}{Bibliography}{8}{section*.7}%

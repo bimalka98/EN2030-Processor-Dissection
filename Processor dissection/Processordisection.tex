@@ -72,11 +72,11 @@ glghuly
 \vspace{1cm}\hrule
 
 \section{Micro-Architecture (Data Path and the Controller)}
-Computer architecture consists of two main branches called instruction set architecture (ISA) and microarchitecture ($\mu$arch). A given ISA can be implemented with different microarchitectures. So, microarchitecture depends on the ISA and the technologies used in implementations. The microarchitecture is the digital logic that defines the way of how the instructions should be executed. Here we have focused on the organization of the Data path and the controller of the internal processor design.
+Computer architecture consists of two main branches called instruction set architecture (ISA) and microarchitecture ($\mu$arch). A given ISA can be implemented with different microarchitectures. So, microarchitecture depends on the ISA and the technologies used in implementations. The microarchitecture is the digital logic that defines the way of how the instructions should be executed. Here we have focused on the organization of the Data path and the controller of the internal processor design\cite{pcmag}.
 \subsection{Arm Cortex-R5 Processor}
-This is a mid-range CPU which is widely used in embedded, real-time systems. To that, ARMv7-R architecture is implemented in cortex-R5.ARM is a RISC architecture. Microcontroller Bus architecture has been embedded with it for better performance. When it comes to the internal design of the processor, the processor may have single or dual CPU configurations. However, the CPU data path is common at all 32bits or 64bits data paths will be used.(Refer figure \ref{r5core}) \\
+This is a mid-range CPU which is widely used in embedded, real-time systems. To that, ARMv7-R architecture is implemented in cortex-R5.ARM is a RISC architecture. Microcontroller Bus architecture has been embedded with it for better performance. When it comes to the internal design of the processor, the processor may have single or dual CPU configurations. However, the CPU data path is common at all 32bits data paths will be used\cite{TCLS}.(Refer figure \ref{r5core}) \\
 
-The PreFetch Unit (PFU) fetches instructions from the memory device, forecasts branches, and forwards instructions to the Data Processing Unit (DPU). Both directions are executed and the Load / Store Unit (LSU) is used for transferring data memory. The L1 interface, which includes L1 instructions and caches and TCM interfaces, is supported with the PFU and LSU interface. The L1 caches are in turn connected to the L2 memory system and the LSU is connected by a more direct peripheral port with the L2 memory system. For cache management needed to be coherent with ACP transactions, the Data Cache interfaces L1 to the $\mu$SCU.\\
+The PreFetch Unit (PFU) fetches instructions from the memory device, forecasts branches, and forwards instructions to the Data Processing Unit (DPU). Both directions are executed and the Load / Store Unit (LSU) is used for transferring data memory. The L1 interface, which includes L1 instructions and caches and TCM interfaces, is supported with the PFU and LSU interface. The L1 caches are in turn connected to the L2 memory system and the LSU is connected by a more direct peripheral port with the L2 memory system. For cache management needed to be coherent with ACP transactions, the Data Cache interfaces L1 to the $\mu$SCU\cite{developer}.\\
 
 \begin{figure}[!h]
 	\centering
@@ -94,7 +94,7 @@ The internal design of an intel core i3 8300 is very advanced and complicated. I
 	\includegraphics[scale= 0.05]{figures/intuarch}
 	\caption{$\mu$arch: of Intel Core-i3 8300}
 \end{wrapfigure}
-In the back end, a micro-operation visits the reorder buffer. It is where the allocation, renaming, and deletion of the registry takes place. A variety of other optimizations are also performed at this point. The $\mu$OPs are sent from the reorder buffer to the unified scheduler. The scheduler has a variety of escape ports, each of which is attached to a series of separate execution units. Some units can execute simple ALU operations, others can multiply and split, with some units capable of more complex operations, such as separate vector operations. The scheduler is essentially responsible for queuing the $\mu$OPs to the appropriate port so that they can be performed by the appropriate device.Any $\mu$OPs deal with access to memory, load \& store. Those will be sent to the dedicated scheduling ports that can handle the memory operation. Store operations go to the store buffer, which is also capable of forwarding as required. Load operations often come from a load buffer. According to that, the internal design consists of three major sub designs. These are focused on the following improvements, 
+In the back end, a micro-operation visits the reorder buffer. It is where the allocation, renaming, and deletion of the registry takes place. A variety of other optimizations are also performed at this point. The $\mu$OPs are sent from the reorder buffer to the unified scheduler. The scheduler has a variety of escape ports, each of which is attached to a series of separate execution units. Some units can execute simple ALU operations, others can multiply and split, with some units capable of more complex operations, such as separate vector operations. The scheduler is essentially responsible for queuing the $\mu$OPs to the appropriate port so that they can be performed by the appropriate device.Any $\mu$OPs deal with access to memory, load \& store. Those will be sent to the dedicated scheduling ports that can handle the memory operation. Store operations go to the store buffer, which is also capable of forwarding as required. Load operations often come from a load buffer. According to that, the internal design consists of three major sub designs. These are focused on the following improvements,
 
  \begin{enumerate}[\hspace{1cm}1.]
  	\item \textbf{	Front end}
@@ -117,7 +117,7 @@ In the back end, a micro-operation visits the reorder buffer. It is where the al
  		\item 8-way to 4-way set associative mapping.
  	\end{enumerate}
  \end{enumerate}
-The fetching and decoding of the instructions are happening separately. Fetched instructions are stored in a queue (FIFO). After decoding, these are executed in the execution engine. All these three subsystems are controlled by the control signals. Generating control signals are done in a control store.
+The fetching and decoding of the instructions are happening separately. Fetched instructions are stored in a queue (FIFO). After decoding, these are executed in the execution engine. All these three subsystems are controlled by the control signals. Generating control signals are done in a control store\cite{Coffee}.
 \vspace{1cm}\hrule
 \section{ALU functions}
 
@@ -155,7 +155,7 @@ Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU shou
 
 \end{itemize}
 
-Core i3 processors are widely used in desktop and laptop general-purpose computers. The clock frequency is around 3.7GHz so, Its ALU is running at a higher speed than its clock rate.
+Core i3 processors are widely used in desktop and laptop general-purpose computers. The clock frequency is around 3.7GHz so, Its ALU is running at a higher speed than its clock rate\cite{howstuffworks}.
 
 
 
@@ -215,7 +215,7 @@ To reduce this latency, an address-translation cache which is known as \textbf{\
 
 \subsubsection{Store Buffers}
 
-Each core of an Intel Core-i3 processor consists of a Store Buffer which is located between the \textit{Port 4}(dedicated port for storing data) of the scheduler and the \textit{L1-Data cache} as shown in the figure \ref{intelcore}. Every \textbf{\textit{memory write}} operation carried out by the processor is temporarily stored in this buffer before they are executed. So the processor does not have to wait until the operation is finished and it can carry out the rest of the instructions freely. This mechanism increases the processor's overall performance through \textit{\textbf{eliminating the unwanted idling}}. 
+Each core of an Intel Core-i3 processor consists of a Store Buffer which is located between the \textit{Port 4}(dedicated port for storing data) of the scheduler and the \textit{L1-Data cache} as shown in the figure \ref{intelcore}. Every \textbf{\textit{memory write}} operation carried out by the processor is temporarily stored in this buffer before they are executed. So the processor does not have to wait until the operation is finished and it can carry out the rest of the instructions freely. This mechanism increases the processor's overall performance through \textit{\textbf{eliminating the unwanted idling}}.
 %11.1 INTERNAL CACHES, TLBS, AND BUFFERS
 
 
@@ -287,46 +287,74 @@ In coffee lake $\mu$architecture the processor is divided into several \textbf{\
 	\caption{Timing Related to Cache Memory in Intel core i3-8300 Processors\cite{iaorm}}
 \end{table}
 
-\subsection{Arm Cortex-R5 Processor} 
-%1.4 Interfaces
-One Thumb instruction can be fetched on each cycle, whereas each
-32-bit ARM instruction requires two clock cycles per fetch.
+\subsection{Arm Cortex-R5 Processor}
+%1.4 Interfaces 9.8 Accelerator Coherency Port interface
+In Arm Cortex-R5 Processors there is \textbf{\textit{only one clock}} input(\textbf{\textit{CLKIN}}) for the entire CPU and the \textit{Advanced Microcontroller Bus Architecture}(AMBA) system which consists of AXI master, AXI slave, ACP(Accelerator Coherency Port) and some other ports, is synchronized with this clock. That is even though AMBA system's clock has lower frequency, its rising edge is synchronous to the CLKIN. As mentioned previously, AXI master is used for instruction fetching and data access while AXI slave is used for external access to TCMs. Since ARM Coretx-R5 implements the both \textit{arm} and \textit{thumb-2} ISAs, in ARM state the memory system can supply up to two instructions per cycle while in thumb state the memory system can supply up to four instructions per cycle. In addition to that, access to external memory will take tens or even hundreds of core cycles in a normal ARM processor.
 
-In many ARM
-processor-based systems, access to external memory will take tens or even hundreds of core cycles
-
-
-CLKIN (Input) Master processor clock.
-
-2.3.3 Clocking
-
-Advanced Microcontroller Bus Architecture (AMBA) AXI and AHB protocols.
+%2.3.3 Clocking
 
 
 
 \vspace{1cm}\hrule
+
 \section{Comaprison}
+
+Cortex-R5 uses armv-7r architecture which uses native 32bits data paths, favoring four-byte operations. This implementation is a reduced instruction set computing (RISC) based digital logic design. Simple instructions are operated only on registers and there is a lot of general-purpose registers. Armv-7r is allowable only read and store with the main memory. In this microarchitecture, number of general-purpose instructions are low hence, they can be executed using fewer number of transistors. The silicon cost is very low, and the power consumption is also very low. The ALU is directly connected with its 32bits registers and all logical and mathematical operations are manipulated. Like other RISC based architectures, this is explicitly fast and widely used in embedded processors.\\
+
+Intel core i3 8300 processor is implemented by using complex instruction set computing (CISC) based architecture. Intel’s 64bits data paths are occupied in this microarchitecture. The number of general-purpose registers is lesser than cortex-R5 processor while complex instructions are executed in a single clock cycle. There is significant amount of digital logic to manipulate such behavior. The decoded variable length (1-15bytes) instructions called microcode’s sequence is traversed to the execution engine in a first in first out manner. This is classified into three stages in this microarchitecture: front end, execution engine and memory subsystem. This microarchitecture can operate directly on memory as well. The ALU is capable of manipulating 64bits numbers and digital logic. This processor internal design is focused on the high performance; hence it is an expensive power-hungry processor which is commonly used in laptops and desktops. There is a well-known saying that Intel architecture is like an American muscle car.\\
+
+
+{\footnotesize \textit{Consider these abbreviations to refer table},
+	D-\textit{Data}, I-\textit{Instruction}, WB-\textit{Write-back}, WT-\textit{Write-through} U-\textit{Unified}, S-\textit{Shared}, SA-\textit{Set Associative}}
+
 \begin{table}[!h]
 	\centering
 	\begin{tabular}{l ||c| c }
 		\textbf{Feature} &\textbf{ARM cortex-R5}&\textbf{Intel Core-i3-8300}\\\hline
 		ISA &RISC&CISC\\
-		%Micro Architecture &&Coffee Lake($8^{th}$ Gen: Intel)\\
+		Micro Architecture &ARMv7r&Coffee Lake($8^{th}$ Gen: Intel)\\
+		Digital logic design&	Comparably simple	&Complex\\
+		Silicon cost&	Low	&High\\
+		Operation	&Only on registers&	On registers \& directly on memory as well\\
+		Data paths&	32 bits	&64 bits\\
+
+		Number of Cores& Single/Dual(Configurable)&4\\
 		Memory Sys: Archi:&Protected Mem: Sys: Archi:(PMSA)&Virtual Mem: Sys: Archi:(VMSA)\\
+		TLBs&N/A&I-TLB, D-TLB, STLB-U\\
 		%Typical clock speed&600 MHz on 40 nm&\\
+		Cache  Levels& L1-I, L1-D, Optional L2  & L0-$\mu$OP, L1-I,   L1-D, L2-U, L3-U-S\\
+		Cache Mapping Technology&Set Associative&Set Associative\\
+		Cache writing Policy&WB or WT (Configurable through MPU)& WB\\
+		Cache Line Size&32 Bytes&64 Bytes\\
+		TCMs&Single Port ATCM, Dual Port BTCM&N/A\\
+		Primary(physical) DRAM& 4GB&Upto 64GB of DDR4-2400\\
+		ECC on Memories& Available& Available\\
+		Clock Domains& Single Clock Input(CLKIN)&Multiple Clock Domains\\
+		
+		
 		\hline\hline
 	\end{tabular}
-	\caption{}
+	\caption{Key differences in two processors}
 \end{table}
 
-\subsection{Instruction Set Architecture of the Processor}
-\subsection{Micro-Architecture (Data Path and the Controller)}
-\subsection{ALU functions}
-\subsection{Cache Memory and Memory Interfacing}
-\subsection{Timing related to Memory}
+
+
+
+
+%Arm Cortex-R5 Processor Intel Core i3-8300 Processor
+
+%\paragraph{Instruction Set Architecture of the Processor}
+%\paragraph{Micro-Architecture (Data Path and the Controller)}
+%\paragraph{ALU functions}
+%
+%\paragraph{Cache Memory and Memory Interfacing} In the given two processors there are strong differences in cache memory organization. In Intel Core i3-8300 Processor there are 4 levels of cache while there is only L1 cache  in the Arm Cortex-R5 Processor since L2 cache is optional.
+%
+%\paragraph{Timing related to Memory}
+
+
 \vspace{1cm}\hrule
 \bibliographystyle{plain}
-\footnotesize
+\scriptsize
 \bibliography{reference}
 
 \end{document}

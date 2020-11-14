@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{crspg}
 Arm cortex-r series programmer's guide.
@@ -12,6 +12,10 @@ Coffee {Lake} - {Microarchitectures} - {Intel} - {WikiChip}.
 \bibitem{crtrm}
 Cortex-r5 technical reference manual.
 \newblock \url{https://developer.arm.com/documentation/ddi0460/d}.
+
+\bibitem{pcmag}
+Definition of microarchitecture.
+\newblock \url{https://www.pcmag.com/encyclopedia/term/microarchitecture}.
 
 \bibitem{iaorm}
 Intel® 64 and {IA}-32 {Architectures} {Optimization} {Reference} {Manual}.
@@ -27,5 +31,24 @@ Skylake (client) - {Microarchitectures} - {Intel} - {WikiChip}.
 Software {Techniques} for {Shared}-{Cache} {Multi}-{Core} {Systems}.
 \newblock
   \url{https://www.intel.com/content/www/us/en/develop/articles/software-techniques-for-shared-cache-multi-core-systems.html}.
+
+\bibitem{howstuffworks}
+How {Microprocessors} {Work}.
+\newblock \url{https://computer.howstuffworks.com/microprocessor.htm}, April
+  2000.
+
+\bibitem{TCLS}
+X.~Iturbe, B.~Venu, E.~Ozer, and S.~Das.
+\newblock A {Triple} {Core} {Lock}-{Step} ({TCLS}) {ARM}® {Cortex}®-{R5}
+  {Processor} for {Safety}-{Critical} and {Ultra}-{Reliable} {Applications}.
+\newblock In {\em 2016 46th {Annual} {IEEE}/{IFIP} {International} {Conference}
+  on {Dependable} {Systems} and {Networks} {Workshop} ({DSN}-{W})}, pages
+  246--249, June 2016.
+
+\bibitem{developer}
+Arm Ltd.
+\newblock Cortex-{R5}.
+\newblock
+  \url{https://developer.arm.com/ip-products/processors/cortex-r/cortex-r5}.
 
 \end{thebibliography}
