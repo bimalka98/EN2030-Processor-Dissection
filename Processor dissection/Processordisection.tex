@@ -76,7 +76,7 @@ Computer architecture consists of two main branches called instruction set archi
 \subsection{Arm Cortex-R5 Processor}
 This is a mid-range CPU which is widely used in embedded, real-time systems. To that, ARMv7-R architecture is implemented in cortex-R5.ARM is a RISC architecture. Microcontroller Bus architecture has been embedded with it for better performance. When it comes to the internal design of the processor, the processor may have single or dual CPU configurations. However, the CPU data path is common at all 32bits data paths will be used\cite{TCLS}.(Refer figure \ref{r5core}) \\
 
-The PreFetch Unit (PFU) fetches instructions from the memory device, forecasts branches, and forwards instructions to the Data Processing Unit (DPU). Both directions are executed and the Load / Store Unit (LSU) is used for transferring data memory. The L1 interface, which includes L1 instructions and caches and TCM interfaces, is supported with the PFU and LSU interface. The L1 caches are in turn connected to the L2 memory system and the LSU is connected by a more direct peripheral port with the L2 memory system. For cache management needed to be coherent with ACP transactions, the Data Cache interfaces L1 to the $\mu$SCU\cite{developer}.\\
+The PreFetch Unit (PFU) fetches memory card instructions, predicts branches, and forwards the Data Processing Unit (DPU) instructions. Both directions are executed, and data memory is passed using the Load / Store Unit (LSU). The PFU and LSU interfaces support the L1 interface, which contains L1 instructions and caches, and TCM interfaces. In exchange, the L1 caches are linked to the L2 memory system and the LSU connects to the L2 memory system through a more direct peripheral port. Data Store interfaces L1 to the $\mu$SCU\cite{developer} for cache management to be compatible with ACP transactions.\\
 
 \begin{figure}[!h]
 	\centering
@@ -84,44 +84,46 @@ The PreFetch Unit (PFU) fetches instructions from the memory device, forecasts b
 	\caption{System control and configuration registers}
 \end{figure}
 
-There is a system control coprocessor as the controller in cortex-R5 implementation. All control signals that manipulate the registers, system-level operations, cache maintenance, and such memory system functionalities are produced by this. There are 18 read-only registers and 7 read/write registers among them as shown here.
+There is a system control coprocessor as the controller in cortex-R5 implementation.The control signals manipulating registers, device operations management of cache and the functionality of the memory system are induced by this. There are 18 read-only registers and 7 read/write registers among them as shown here.
 
 
 \subsection{Intel Core i3-8300 Processor}
-The internal design of an intel core i3 8300 is very advanced and complicated. It is CISC based microarchitecture called 'Coffee Lake'.  The actual size of a data path is 64 bits. Three levels of caches have been implemented inside it for better performance. Uni-processor configuration is used with four CPU cores and threads in the design. This is pipelined. The focus of the pipelining is to reduce power consumption and enhance overall performance. The coffee lake's pipeline is the same as intel's sky lake pipelining strategies. So, it is embedded in additional parallelism for achieving its performance. The pipeline can be broken down into three zones: the \textbf{\textit{front-end}}, \textit{\textbf{back-end or execution driver}}, and the \textbf{\textit{memory subsystem}}. The front-end aims to feed the back end with an adequate stream of operations that it collects by decoding instructions from memory. The front-end has two primary pathways: the micro-operations($\mu$OPs) cache route and the legacy path. The legacy path is the standard path through which variable-length x86 instructions are extracted from the Level 1 instruction cache, queued, and subsequently decoded into shorter, fixed-length $\mu$OPs. The alternative and much more suitable approach is the $\mu$OPs cache path through which a cache containing already decoded $\mu$OPs receives a hit causing the $\mu$OPs to be transferred directly to the decode list.\\
+The internal design of an intel core i3 8300 is very advanced and complicated. It is CISC based microarchitecture called 'Coffee Lake'.  The actual size of a data path is 64 bits. Three levels of caches have been implemented inside it for better performance. Uni-processor configuration is used with four CPU cores and threads in the design. This is pipelined. The focus of the pipelining is to reduce power consumption and enhance overall performance. The coffee lake's pipeline is the same as intel's sky lake pipelining strategies. So, it is embedded in additional parallelism for achieving its performance. The pipeline can be split into three zones: the \textbf{\textit{front-end}}, \textit{\textbf{execution}}, and the \textbf{\textit{subsystem for memory}}. By encoding instructions, the front end is supposed to feed the back end with an appropriate stream of operations that it collects from memory. There are two major routes to the front-end: the micro-operations($\mu$OPs) cache route and the legacy path. The legacy path is the regular path by which x86 instructions of variable length are extracted, queued, and finally decoded into shorter fixed-length $\mu$OPs from the Level 1 instruction cache. The alternative and much more fitting solution is the cache route of $\mu$OPs in which a cache containing decoded $\mu$OPs receives a hit that explicitly passes the $\mu$OPs to the decode list.\\
 
 \begin{wrapfigure}[15]{r}{3.7cm}
 	\includegraphics[scale= 0.05]{figures/intuarch}
 	\caption{$\mu$arch: of Intel Core-i3 8300}
 \end{wrapfigure}
-In the back end, a micro-operation visits the reorder buffer. It is where the allocation, renaming, and deletion of the registry takes place. A variety of other optimizations are also performed at this point. The $\mu$OPs are sent from the reorder buffer to the unified scheduler. The scheduler has a variety of escape ports, each of which is attached to a series of separate execution units. Some units can execute simple ALU operations, others can multiply and split, with some units capable of more complex operations, such as separate vector operations. The scheduler is essentially responsible for queuing the $\mu$OPs to the appropriate port so that they can be performed by the appropriate device.Any $\mu$OPs deal with access to memory, load \& store. Those will be sent to the dedicated scheduling ports that can handle the memory operation. Store operations go to the store buffer, which is also capable of forwarding as required. Load operations often come from a load buffer. According to that, the internal design consists of three major sub designs. These are focused on the following improvements,
+The reorder buffer is visited at the back end by a micro-operation. This is where the register is reserved, renamed, and deleted. At this stage, several other optimisations are also carried out. The $\mu$OPs are forwarded to the unified scheduler from the reorder buffer. There are a few escape ports in the scheduler, each of which is connected to a set of distinct execution modules. Some units can perform basic ALU operations, others can multiply and divide, with some units, such as independent vector operations, capable of more complicated operations. The scheduler is responsible for the queuing of the $\mu$OPs to the relevant port so that the appropriate system will execute them.
+Both $\mu$OPs deal with memory access, load & store access. Those that can perform the memory operation would be sent to the dedicated scheduling ports. Store operations go to the buffer of the store, which is also able to forward if required. Mostly, load operations come from a load buffer.  According to that, the internal design consists of three major sub designs. These are focused on the following improvements,
 
  \begin{enumerate}[\hspace{1cm}1.]
  	\item \textbf{	Front end}
  	\begin{enumerate}[I.]
- 		\item  	 Increase the legacy pipeline delivery to 5 microoperations.
- 		\item Increase the IDQ delivery to 6 microoperations.
- 		\item Support 2.28x larger allocation queue that has 64/thread.
- 		\item Improves the performance of the branch prediction unit.
+ 		\item  	 Increase the delivery of the legacy pipeline to 5 micro operations.
+ 		\item Increase the spread of IDQ to 6 micro-operations.
+ 		\item Support for a 2.28x wider 64/thread allocation queue.
+ 		\item Improves the branch prediction unit's output.
+
  	\end{enumerate}
 
  	\item\textbf{	Execution engine}
  	\begin{enumerate}[I.]
- 		\item  	 Increase the re-order buffer to 224 entries.
- 		\item Increase the scheduler to 97 entries and the integer register file to 180 entries.
- 		\item Increase the store buffer to 56 entries.
+ 		\item  	 Increase the buffer for re-order to 224 entries.
+ 		\item Increase the scheduler to 97 entries and to 180 entries for the integer registry file.
+ 		\item Increase the buffer in the store to 56 entries.
  	\end{enumerate}
 
  	\item	\textbf{Memory subsystem}
  	\begin{enumerate}[I.]
- 		\item 8-way to 4-way set associative mapping.
+ 		\item Associative mapping, 8-way to 4-way set.
  	\end{enumerate}
  \end{enumerate}
-The fetching and decoding of the instructions are happening separately. Fetched instructions are stored in a queue (FIFO). After decoding, these are executed in the execution engine. All these three subsystems are controlled by the control signals. Generating control signals are done in a control store\cite{Coffee}.
+The fetching and decoding of the instructions are happening separately. Fetched instructions are stored in a queue (FIFO). After decoding, these are executed in the execution engine.The control signals control each of these three subsystems. Generating control signals are done in a control store\cite{Coffee}.
 \vspace{1cm}\hrule
 \section{ALU functions}
 
-The arithmetic and logic unit is abbreviated as ALU in the computer organization. ALU is responsible for all arithmetic and logical operations. It is implemented by using digital logic for the respective set of operations that are required.
+The arithmetic and logic unit is abbreviated as ALU in the computer organization. ALU is responsible for all arithmetic and logical operations. It shall be carried out using the digital logic required for the respective set of operations.
 
  \begin{figure}[!h]
 	\centering
@@ -148,14 +150,14 @@ In the eight-stage pipeline, an ALU performs its task. It two data paths that ar
 
 \subsection{Intel Core i3-8300 Processor}
 
-Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU should be capable of manipulating these numbers in it. This is implemented by using digital logic.(figure \ref{i3alu}) Two of them are embedded in a processor for,
+Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU should be capable of manipulating these numbers in it. This is achieved with digital logic. (figure \ref{i3alu}) Two of them are embedded in a processor for,
 \begin{itemize}
 	\item 	Physical address calculations
 	\item	Mathematical operations
 
 \end{itemize}
 
-Core i3 processors are widely used in desktop and laptop general-purpose computers. The clock frequency is around 3.7GHz so, Its ALU is running at a higher speed than its clock rate\cite{howstuffworks}.
+Core i3 processors are widely used in desktop and laptop general-purpose computers. The frequency of the clock is about 3.7 GHz, so the ALU operates at a higher speed than its clock time.\cite{howstuffworks}.
 
 
 
