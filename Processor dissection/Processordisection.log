@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.9)  14 NOV 2020 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.9)  14 NOV 2020 13:52
 entering extended mode
 **./Processordisection.tex
 (Processordisection.tex
@@ -1070,7 +1070,13 @@ File: figures/tcm.jpg Graphic file (type jpg)
 <use figures/tcm.jpg>
 Package pdftex.def Info: figures/tcm.jpg  used on input line 241.
 (pdftex.def)             Requested size: 192.36569pt x 135.26305pt.
-[6] [7 <./figures/tcm.jpg>]
+[6]
+Underfull \hbox (badness 2050) in paragraph at lines 244--245
+\OT1/cmr/m/n/10.95 a pro-ces-sor re-quest is a com-mon is-sue re-lated to cache
+ mem-o-ries
+ []
+
+[7 <./figures/tcm.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
  []
@@ -1116,7 +1122,7 @@ Here is how much of TeX's memory you used:
  34138 multiletter control sequences out of 15000+200000
  549391 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,10n,85p,1577b,447s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,10n,85p,1578b,447s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-
 super-ts1.enc}<C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmbx10.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/font
@@ -1136,7 +1142,7 @@ rs/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.
 pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-supe
 r/sfrm0800.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/cm-super/sfrm1095.pfb>
-Output written on Processordisection.pdf (10 pages, 1333539 bytes).
+Output written on Processordisection.pdf (10 pages, 1333580 bytes).
 PDF statistics:
  383 PDF objects out of 1000 (max. 8388607)
  76 named destinations out of 1000 (max. 500000)
