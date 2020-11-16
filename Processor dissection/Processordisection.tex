@@ -160,8 +160,6 @@ Intel's Coffee Lake architecture is used 32bits registers. So, for that ALU shou
 Core i3 processors are widely used in desktop and laptop general-purpose computers. The frequency of the clock is about 3.7 GHz, so the ALU operates at a higher speed than its clock time.\cite{howstuffworks}.
 
 
-
-
 \vspace{1cm}\hrule
 \section{Cache Memory and Memory Interfacing}
 
@@ -301,9 +299,9 @@ In Arm Cortex-R5 Processors there is \textbf{\textit{only one clock}} input(\tex
 
 \section{Comaprison}
 
-Cortex-R5 uses armv-7r architecture which uses native 32bits data paths, favoring four-byte operations. This implementation is a reduced instruction set computing (RISC) based digital logic design. Simple instructions are operated only on registers and there is a lot of general-purpose registers. Armv-7r is allowable only read and store with the main memory. In this microarchitecture, number of general-purpose instructions are low hence, they can be executed using fewer number of transistors. The silicon cost is very low, and the power consumption is also very low. The ALU is directly connected with its 32bits registers and all logical and mathematical operations are manipulated. Like other RISC based architectures, this is explicitly fast and widely used in embedded processors.\\
+Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, favouring four-byte operations, while intel i3 8300 is using intel’s coffee lake architecture which uses 64bits data paths. Armv-7r is reduced instruction set computing (RISC) based digital logic design and the i3 8300 is complex instruction computing (CISC) based. Simple instructions are operated only on registers and there is a lot of general-purpose registers in cortex-R5. Armv-7r is allowable only read and store with the main memory. The silicon cost is very low, and the power consumption is also very low. The number of general-purpose registers is less in i3 8300 processor and directly operate with main memory as well, while complex instructions are executed in a single clock cycle. There is significant amount of digital logics to manipulate such behaviour. The ALU is directly connected with its 32bits registers and all logical and mathematical operations are manipulated in Cortex-R5. The ALU of i3 8300 is capable of manipulating 64bits numbers and digital logics.  Like other RISC based architectures, this is explicitly fast and widely used in embedded processors. There is a well-known saying that intel architecture is like an American muscle car. It costs more and power-hungry.\\
 
-Intel core i3 8300 processor is implemented by using complex instruction set computing (CISC) based architecture. Intel’s 64bits data paths are occupied in this microarchitecture. The number of general-purpose registers is lesser than cortex-R5 processor while complex instructions are executed in a single clock cycle. There is significant amount of digital logic to manipulate such behavior. The decoded variable length (1-15bytes) instructions called microcode’s sequence is traversed to the execution engine in a first in first out manner. This is classified into three stages in this microarchitecture: front end, execution engine and memory subsystem. This microarchitecture can operate directly on memory as well. The ALU is capable of manipulating 64bits numbers and digital logic. This processor internal design is focused on the high performance; hence it is an expensive power-hungry processor which is commonly used in laptops and desktops. There is a well-known saying that Intel architecture is like an American muscle car.\\
+
 
 
 {\footnotesize \textit{Consider these abbreviations to refer table},
