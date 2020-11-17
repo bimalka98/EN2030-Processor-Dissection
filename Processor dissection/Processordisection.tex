@@ -33,28 +33,33 @@
 \end{table}
 
 \pagebreak
+\section{Introduction}
+\subsection{Intel Core i3-8300}
+Core i3-8300 is a desktop processor released in Q'2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 TDP.\cite{i3doc}
 
  \begin{figure}[!h]
 	\centering
 	\subfigure[Quad Core Core-i3 8300 Processor]
-	{ \includegraphics[scale=0.15, angle= +90]{figures/soc}
-			\label{intelsoc}
+	{ \includegraphics[scale=0.1, angle= +90]{figures/soc}
+		\label{intelsoc}
 	}\hspace{1.5cm}
 	\subfigure[A Single Core]
-	{ \includegraphics[scale=0.41]{figures/core}
-			\label{intelcore}
+	{ \includegraphics[scale=0.31]{figures/core}
+		\label{intelcore}
 	}
-\caption{Intel core-i3 8300 Processor}
+	\caption{Intel core-i3 8300 Processor}
 \end{figure}
+\subsection{ARM Cortex R5}
+Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-time mission critical applications. The processor was introduced in 2011.\cite{WikiARM}
 
  \begin{figure}[!h]
 	\centering
 	\subfigure[Dual Core - Cortex -R5 Processor]
-	{ \includegraphics[scale=0.25, angle= +90]{figures/r5processor}
+	{ \includegraphics[scale=0.2, angle= +90]{figures/r5processor}
 			\label{r5processor}
 	}\hspace{1.5cm}
 	\subfigure[A Single CPU]
-	{ \includegraphics[scale=0.45]{figures/r5core}
+	{ \includegraphics[scale=0.38]{figures/r5core}
 	\label{r5core}
 	}
 \caption{ARM Cortex R5 Processor}
@@ -62,11 +67,6 @@
 \pagebreak
 
 %============================================================
-\section{Introduction}
-\subsection{Intel Core i3-8300}
-Core i3-8300 is a desktop processor released in Q'2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 TDP.\cite{i3doc}
-\subsection{ARM Cortex R5}
-Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-time mission critical applications. The processor was introduced in 2011.\cite{WikiARM}
 
 \section{Instruction Set Architecture}
 \subsection{i3-8300: ISA}
@@ -123,13 +123,13 @@ These instructions are only accessible to the operating system and privileged so
 \subsection{i3-8300: Instruction Format}
 The general format of a x86-64 instruction is as follows and contains some optional fields which enhances the functionality of the instruction set. They can be considered as a variable length instruction set.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.90\textwidth]{figures/InsForm.jpg}
 \caption{{\small \textit{Allocation of bytes within an instruction}}\cite{i3dev}}
 \end{figure}
 The ModR/M byte and SIB byte together give addressing information when used.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.45\textwidth]{figures/ModRM.jpg}
 \includegraphics[width=0.45\textwidth]{figures/SIB.jpg}
 \caption{{\small \textit{Bit allocation within ModR/M byte and SIB byte}}\cite{i3dev}}
@@ -157,7 +157,7 @@ These instructions are for general maintenance of the processor, co-processor, c
 \subsection{Cortex R5: Instruction Format}
 The ARMv7 instruction format follows a general allocation scheme. The [31:28] bits are for conditional execution while [27:25] bits select the class of the instruction. Each class has its unique bit arrangement and it is further specialized for each instruction depending on the operands. It can be seen that the register addresses and immediate values occur mostly at the same location throughout the instruction set to allow simpler decoding hardware.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.90\textwidth]{figures/CortexFormatGen.jpg}
 \caption{{\small \textit{General format of an ARMv7-R instruction}}\cite{ARMref}}
 \includegraphics[width=0.90\textwidth]{figures/CortexLDR.jpg}
