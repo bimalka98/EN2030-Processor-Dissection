@@ -411,7 +411,14 @@ Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, fav
 	\centering
 	\begin{tabular}{l ||c| c }
 		\textbf{Feature} &\textbf{ARM cortex-R5}&\textbf{Intel Core-i3-8300}\\\hline
-		ISA &RISC&CISC\\
+		Primary focus & Embedded applications & General purpose\\
+		ISA category&RISC&CISC\\
+		Instruction length & Fixed length & Variable length\\
+		& & Includes optional bytes\\
+		Instruction complexity & Simple instructions & Complex instructions\\
+		& Close to hardware & Enhanced functionality\\
+		Addressing modes supported & Simple & Complex modes
+		& Register direct and displacement & Include bases, scales and offsets\\
 		Micro Architecture &ARMv7r&Coffee Lake($8^{th}$ Gen: Intel)\\
 		Digital logic design&	Comparably simple	&Complex\\
 		Silicon cost&	Low	&High\\
@@ -437,8 +444,7 @@ Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, fav
 	\caption{Key differences in two processors}
 \end{table}
 
-
-
+The two processors have some significant differences. Intel Core i3-8300 is a low-performance processor designed for general purpose computing while the ARM Cortex-R5 is a mid-performance processor specialized for real-time embedded applications and digital signal processing tasks. Apart from that the underlying ISA and micro-architecture also has differences as they follow RISC or CISC principles. Cortex-R5 has an implementation that is closer to hardware resulting in higher clock speeds, mostly single clock-cycle operations, shorter and less-vivid instructions and a simpler assembly language. Core-i3 processor has a vast instruction set that has advanced functionality where some instructions can take several clock cycles to execute.
 
 
 %Arm Cortex-R5 Processor Intel Core i3-8300 Processor
