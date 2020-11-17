@@ -4,10 +4,6 @@
 Arm architecture reference manual(armv7-a and armv7-r edition).
 \newblock \url{https://developer.arm.com/documentation/ddi0406/latest/}.
 
-\bibitem{ARMpg}
-Arm cortex-r programmers guide.
-\newblock \url{https://developer.arm.com/documentation/den0042/a/}.
-
 \bibitem{crspg}
 Arm cortex-r series programmer's guide.
 \newblock \url{https://developer.arm.com/documentation/den0042/a/}.
