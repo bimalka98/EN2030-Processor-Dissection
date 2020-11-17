@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.9)  17 NOV 2020 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.9)  17 NOV 2020 23:20
 entering extended mode
 **./Processordisection.tex
 (Processordisection.tex
@@ -1277,9 +1277,8 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.430 C
-       ortex-R5 uses armv-7r architecture which has native 32bits data paths...
-]
+l.429 
+      ]
 Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
@@ -1342,7 +1341,7 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/U
 sers/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm109
 5.pfb><C:/Users/ASUS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-su
 per/sftt1095.pfb>
-Output written on Processordisection.pdf (13 pages, 1123721 bytes).
+Output written on Processordisection.pdf (13 pages, 1123459 bytes).
 PDF statistics:
  493 PDF objects out of 1000 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)
