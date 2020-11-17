@@ -2,6 +2,7 @@
 \input{settings/packages}
 \input{settings/page}
 \input{settings/macros}
+\usepackage{float}
 \usepackage{url}
 \usepackage{subfigure}
 \usepackage{wrapfig}
@@ -61,13 +62,109 @@
 \pagebreak
 
 %============================================================
-\section{Instruction Set Architecture of the Processor}
+\section{Introduction}
+\subsection{Intel Core i3-8300}
+Core i3-8300 is a desktop processor released in Q'2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 TDP.\cite{i3doc}
+\subsection{ARM Cortex R5}
+Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-time mission critical applications. The processor was introduced in 2011.\cite{WikiARM}
 
-\subsection{Instruction Set}
-
-\subsection{Instruction classes and Instruction Format}
-glghuly
-
+\section{Instruction Set Architecture}
+\subsection{i3-8300: ISA}
+Intel i3-8300 utilizes the x86-64 ISA developed by Intel. It is a 64-bit extension to the x86 architecture. This architecture has 64-bit wide registers, which support 32-bit operations as well. There are 16 general-purpose registers and several special purpose registers including RIP, RFLAGS, XMM \& MMX registers. RFLAGS is a 64-bit wide flags register. Common flags include Carry({\tt CF}), Parity({\tt PF}), Zero({\tt ZF}) and Overflow({\tt OF}). The instructions can be 1 to 15 bytes long. The source operands can be stored in registers, memory or instruction itself (immediate), while registers or memory can be used as the destination operands. All operands of an instruction cannot be in memory simultaneously.\\
+\textbf{Addressing modes supported\cite{x64asm}}\\
+1. \textbf{Immediate} - {\tt \$immediate\_operand}\\
+2. \textbf{Register} - {\tt register}\\
+3. \textbf{Memory direct} – {\tt memory\_address}\\
+4. \textbf{Memory indirect} – {\tt (register)}\\
+5. \textbf{Base displacement} – {\tt imm(register)}\\
+6. \textbf{Scaled index} – {\tt (reg1,reg2,scale)}\\
+memory address = reg1 + reg2*scale\\
+7. \textbf{Scaled index with displacement} – {\tt imm(reg1,reg2,scale)}\\
+memory address = imm + reg1 + reg2*scale\\\\
+\textbf{Some of the commonly used instructions in x86-64}\cite{i3dev}\\
+\begin{tabular}{l l}
+{\tt nop} & No operation\\
+{\tt mov} & Move to/from mem/reg\\
+{\tt xchg} & Exchange\\
+{\tt bswap} & Byte swap\\
+{\tt push/pop} & Stack usage\\
+{\tt add/adc} & Add/with carry\\
+{\tt sub/sbc} & Subtract/with carry\\
+{\tt mul/imul} & Multiply/unsigned\\
+{\tt div/idiv} & Divide/unsigned\\
+{\tt inc/dec} & Increment/decrement\\
+{\tt neg} & Negate\\
+{\tt and/or/not/xor} & Bitwise operations\\
+{\tt shr/sar} & Shift right logical/arithmetic\\
+{\tt shl/sal} & Shift left logical/arithmetic\\
+{\tt cmp} & Compare\\
+{\tt jmp} & Unconditional jump\\
+{\tt je/jne/jc/jnc} & Jump if equal/ not equal/
+\\&carry/ not carry\\
+{\tt call/ret} & Call subroutine/ return\\
+{\tt loop} & Loops\\
+\end{tabular}
+\subsection{i3-8300: Instruction Classes}
+There are four classes of instructions in the x86-64 architecture: Data transfer instructions, Arithmetic and logic operations, Control flow instructions and Privileged (System) instructions.\\
+\textbf{1. Data transfer instructions}\\
+Data transfer between memory and registers is carried out by the {\tt mov[size] src, dst} instruction. The size of the moved data is given by the suffix of the instruction which can be {\tt b}(byte), {\tt w}(word), {\tt d}(double word) or {\tt q}(quad word). There are few extended versions of {\tt mov} instruction, which support features like zero-extension or sign extension during transfer.\\
+\textbf{2. ALU operations}\\
+ALU supports wide functionality and all the operations have the following general format.\\
+{\tt opcode[size] src2, src1/dst} ;\\
+src1 = operation(src1,src2) or\\dst = operation(src2)\\
+Furthermore, Load Effective Address ({\tt lea}) instruction can be used to utilize the address calculating hardware for normal arithmetic operations.\\
+\textbf{3. Control flow operations}\\
+Control flow instructions include unconditional and conditional branches and subroutine calls.\\
+Unconditional branch: {\tt jmp}\\
+Conditional branch: {\tt je, jne, jl, jge}\\
+Subroutine calls: {\tt call, ret}\\
+\textbf{4. Privileged instructions}\\
+These instructions are only accessible to the operating system and privileged software.
+\subsection{i3-8300: Instruction Format}
+The general format of a x86-64 instruction is as follows and contains some optional fields which enhances the functionality of the instruction set. They can be considered as a variable length instruction set.
+\begin{figure}[H]
+\center
+\includegraphics[width=0.90\textwidth]{figures/InsForm.jpg}
+\caption{{\small \textit{Allocation of bytes within an instruction}}\cite{i3dev}}
+\end{figure}
+The ModR/M byte and SIB byte together give addressing information when used.
+\begin{figure}[H]
+\center
+\includegraphics[width=0.45\textwidth]{figures/ModRM.jpg}
+\includegraphics[width=0.45\textwidth]{figures/SIB.jpg}
+\caption{{\small \textit{Bit allocation within ModR/M byte and SIB byte}}\cite{i3dev}}
+\end{figure}
+\subsubsection{Instruction prefixes\cite{x64asm}}
+Any of the four instruction prefixes can be used to modify the instruction for extended functionality.\\
+1.	Lock and repeat prefixes, BND prefix\\
+2.	Branch hints, segment override prefixes({\tt CS, SS, DS, ES, FS, GS})\\
+3.	Operand size override prefixes\\
+4.	Address size override prefixes\\
+\subsection{Cortex R5: ISA}
+Cortex-R5 utilizes the ARMv7-R architecture with Thumb-2 technology. This is a 32-bit RISC architecture. Instructions can be either 16 or 32-bits in length and almost all the instructions support conditional execution. The ISA can be considered as a load/store architecture as other operations only support operands from registers. There are 16-general purpose registers of which R13, R14 and R15 are used as stack pointer(SP), link register(LR) and program counter(PC), respectively. There is also a current program status register(CPSR) and a saved program status register(SPSR), which is only accessible to privileged software. The CPSR contains flag bits as well as some other fields. Coprocessor 15(CP15) is part of the processor that is responsible for control and error correction tasks. Only privileged software can access its commands and it has 16 32-bit primary registers for its operation.
+\subsection{Cortex R5: Instruction Classes}
+The instructions can be broadly categorized into 5 categories; ALU operations, data transfer operations, branch operations, SIMD/saturated operations and miscellaneous instructions.\cite{ARMpg}\\
+\textbf{1. ALU \& register operations}\\
+ALU operations can perform only on the registers or immediate values. The general format of an operation of this class is, {\tt Operation{cond}{s} Rd, Rn, Operand2} where the {\tt cond} and {\tt s} can be used for conditional execution and signed arithmetic respectively. The {\tt Rd} and {\tt Rn} must be registers while {\tt Operand2} can be flexibly used for registers, immediate values or omitted. These operations also support special multiplication operations for efficient MAC ops.\\
+\textbf{2. Data transfer operations}\\
+These instructions are useful for loading data from memory({\tt LDR}) and storing back to memory({\tt STR}). ISA supports four addressing modes: \textit{Register addressing, Pre-index addressing, Pre-index addressing with write-back and Post-index addressing with write-back}. Multiple transfer instructions are available for faster transfer to/from successive memory locations.\\
+\textbf{3. Branch operations}\\
+There are multiple ways to branch in ARMv7-R including {\tt B} for relative branching, {\tt BL} for linked branching(during subroutines) or modifying the PC register. Direct and Indirect branches can be used where indirect branching results in lesser accuracy for branch prediction. Static and dynamic branch prediction are supported by the ISA, along with a return stack consisting of 4-entry LIFO buffer\\.
+\textbf{4. SIMD/saturation operations}\\
+The 32-bit width of the system can be effectively used by packing,unpacking and operating on 8-bit or 16-bit data using SIMD commands. Saturation arithmetic is also supported.\\
+\textbf{5. Miscellaneous instructions}\\
+These instructions are for general maintenance of the processor, co-processor, cache preload etc.
+\subsection{Cortex R5: Instruction Format}
+The ARMv7 instruction format follows a general allocation scheme. The [31:28] bits are for conditional execution while [27:25] bits select the class of the instruction. Each class has its unique bit arrangement and it is further specialized for each instruction depending on the operands. It can be seen that the register addresses and immediate values occur mostly at the same location throughout the instruction set to allow simpler decoding hardware.
+\begin{figure}[H]
+\center
+\includegraphics[width=0.90\textwidth]{figures/CortexFormatGen.jpg}
+\caption{{\small \textit{General format of an ARMv7-R instruction}}\cite{ARMref}}
+\includegraphics[width=0.90\textwidth]{figures/CortexLDR.jpg}
+\caption{{\small \textit{General bit allocation for data transfer instructions in ARMv7-R}}\cite{ARMref}}
+\includegraphics[width=0.90\textwidth]{figures/CortexSTR.jpg}
+\caption{{\small \textit{Example: Bit allocation for store {\tt STR(register)} instruction in ARMv7-R}}\cite{ARMref}}
+\end{figure}
 %=====================================================================
 \vspace{1cm}\hrule
 
