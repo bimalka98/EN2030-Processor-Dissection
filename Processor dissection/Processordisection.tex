@@ -32,10 +32,14 @@
 			\caption{Contribution from each member to the project}
 \end{table}
 
+\begin{center}
+	\textit{\textbf{*PDF is clickable*}}
+\end{center}
+
 \pagebreak
 \section{Introduction}
 \subsection{Intel Core i3-8300}
-Core i3-8300 is a desktop processor released in Q'2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 TDP.\cite{i3doc}
+Core i3-8300 is a desktop processor released in Q'2 of 2018 by Intel Corporation. It is based on Coffee Lake microarchitecture and manufactured using 14nm process. This processor is developed as a low-end performance processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 W Thermal Design Power(TDP)\cite{i3doc}.
 
  \begin{figure}[!h]
 	\centering
@@ -59,7 +63,7 @@ Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-tim
 			\label{r5processor}
 	}\hspace{1.5cm}
 	\subfigure[A Single CPU]
-	{ \includegraphics[scale=0.38]{figures/r5core}
+	{ \includegraphics[scale=0.36]{figures/r5core}
 	\label{r5core}
 	}
 \caption{ARM Cortex R5 Processor}
@@ -71,16 +75,23 @@ Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-tim
 \section{Instruction Set Architecture}
 \subsection{i3-8300: ISA}
 Intel i3-8300 utilizes the x86-64 ISA developed by Intel. It is a 64-bit extension to the x86 architecture. This architecture has 64-bit wide registers, which support 32-bit operations as well. There are 16 general-purpose registers and several special purpose registers including RIP, RFLAGS, XMM \& MMX registers. RFLAGS is a 64-bit wide flags register. Common flags include Carry({\tt CF}), Parity({\tt PF}), Zero({\tt ZF}) and Overflow({\tt OF}). The instructions can be 1 to 15 bytes long. The source operands can be stored in registers, memory or instruction itself (immediate), while registers or memory can be used as the destination operands. All operands of an instruction cannot be in memory simultaneously.\\
-\textbf{Addressing modes supported\cite{x64asm}}\\
-1. \textbf{Immediate} - {\tt \$immediate\_operand}\\
-2. \textbf{Register} - {\tt register}\\
-3. \textbf{Memory direct} – {\tt memory\_address}\\
-4. \textbf{Memory indirect} – {\tt (register)}\\
-5. \textbf{Base displacement} – {\tt imm(register)}\\
-6. \textbf{Scaled index} – {\tt (reg1,reg2,scale)} memory address = reg1 + reg2*scale\\
-7. \textbf{Scaled index with displacement} – {\tt imm(reg1,reg2,scale)} memory address = imm + reg1 + reg2*scale\\\\
-\textbf{Some of the commonly used instructions in x86-64}\cite{i3dev}\\
-\begin{tabular}{l l c l l}
+
+\textbf{Addressing Modes Supported\cite{x64asm}}
+
+\begin{enumerate}[~~1.]
+\item \textbf{Immediate} - {\tt \$immediate\_operand}
+\item \textbf{Register} - {\tt register}
+\item \textbf{Memory direct} – {\tt memory\_address}
+\item \textbf{Memory indirect} – {\tt (register)}
+\item \textbf{Base displacement} – {\tt imm(register)}
+\item \textbf{Scaled index} – {\tt (reg1,reg2,scale)} memory address = reg1 + reg2*scale
+\item \textbf{Scaled index with displacement} – {\tt imm(reg1,reg2,scale)} memory address = imm + reg1 + reg2*scale
+\end{enumerate}
+
+\textbf{Some of the commonly used Instructions in x86-64}\cite{i3dev}\\
+
+\begin{center}
+	\begin{tabular}{l l c l l}
 {\tt nop} & No operation & & {\tt neg} & Negate\\
 {\tt mov} & Move to/from mem/reg & & {\tt and/or/not/xor} & Bitwise operations\\
 {\tt xchg} & Exchange & & {\tt shr/sar} & Shift right logical/arithmetic\\
@@ -91,10 +102,13 @@ Intel i3-8300 utilizes the x86-64 ISA developed by Intel. It is a 64-bit extensi
 & & & & carry/ not carry\\
 {\tt mul/imul} & Multiply/unsigned & & {\tt call/ret} & Call subroutine/ return\\
 {\tt div/idiv} & Divide/unsigned & & {\tt loop} & Loops\\
-{\tt inc/dec} & Increment/decrement\\
+{\tt inc/dec} & Increment/decrement&&&\\
 \end{tabular}
+\end{center}
+
 \subsection{i3-8300: Instruction Classes}
 There are four classes of instructions in the x86-64 architecture: Data transfer instructions, Arithmetic and logic operations, Control flow instructions and Privileged (System) instructions.\\
+
 \textbf{1. Data transfer instructions}\\
 Data transfer between memory and registers is carried out by the {\tt mov[size] src, dst} instruction. The size of the moved data is given by the suffix of the instruction which can be {\tt b}(byte), {\tt w}(word), {\tt d}(double word) or {\tt q}(quad word). There are few extended versions of {\tt mov} instruction, which support features like zero-extension or sign extension during transfer.\\
 \textbf{2. ALU operations}\\
@@ -111,30 +125,37 @@ These instructions are only accessible to the operating system and privileged so
 \subsection{i3-8300: Instruction Format}
 The general format of a x86-64 instruction is as follows and contains some optional fields which enhance the functionality of the instruction set. This can be considered as a variable length instruction set.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.90\textwidth]{figures/InsForm.jpg}
 \caption{{\small \textit{Allocation of bytes within an instruction}}\cite{i3dev}}
 \end{figure}
 The ModR/M byte and SIB byte together give addressing information when used.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.45\textwidth]{figures/ModRM.jpg}
 \includegraphics[width=0.45\textwidth]{figures/SIB.jpg}
 \caption{{\small \textit{Bit allocation within ModR/M byte and SIB byte}}\cite{i3dev}}
 \end{figure}
 \subsubsection{Instruction prefixes\cite{x64asm}}
-Any of the four instruction prefixes can be used to modify the instruction for extended functionality.\\
-1.	Lock and repeat prefixes, BND prefix\\
-2.	Branch hints, segment override prefixes({\tt CS, SS, DS, ES, FS, GS})\\
-3.	Operand size override prefixes\\
-4.	Address size override prefixes\\
+
+Any of the four instruction prefixes can be used to modify the instruction for extended functionality.
+\begin{enumerate}[~~1.]
+	\item	Lock and repeat prefixes, BND prefix
+	\item	Branch hints, segment override prefixes({\tt CS, SS, DS, ES, FS, GS})
+	\item	Operand size override prefixes
+	\item	Address size override prefixes
+\end{enumerate}
+
 \subsection{Cortex R5: ISA}
 Cortex-R5 utilizes the ARMv7-R architecture with Thumb-2 technology. This is a 32-bit RISC architecture. Instructions can be either 16 or 32-bits in length and almost all the instructions support conditional execution. The ISA can be considered as a load/store architecture as other operations only support operands from registers. There are 16-general purpose registers of which R13, R14 and R15 are used as stack pointer(SP), link register(LR) and program counter(PC), respectively. There is also a current program status register(CPSR) and a saved program status register(SPSR), which is only accessible to privileged software. The CPSR contains flag bits as well as some other fields. Coprocessor 15(CP15) is part of the processor that is responsible for control and error correction tasks. Only privileged software can access its commands and it has 16 32-bit primary registers for its operation.
 \subsection{Cortex R5: Instruction Classes}
 The instructions can be broadly categorized into 5 categories; ALU operations, data transfer operations, branch operations, SIMD/saturated operations and miscellaneous instructions.\cite{ARMpg}\\
+
 \textbf{1. ALU \& register operations}\\
+
 ALU operations can perform only on the registers or immediate values. The general format of an operation of this class is, {\tt Operation[cond][s] Rd, Rn, Operand2} where the {\tt cond} and {\tt s} can be used for conditional execution and signed arithmetic respectively. The {\tt Rd} and {\tt Rn} must be registers while {\tt Operand2} can be flexibly used for registers, immediate values or omitted. These operations also support special multiplication operations for efficient MAC ops.
-\begin{tabular}{l l c l l}
+\begin{center}
+	\begin{tabular}{l l c l l}
 {\tt ADC} & Add with carry & & {\tt ADD} & Add\\
 {\tt MOV} & Move between regs & & {\tt MVN} & Move NOT\\
 {\tt SUB} & Subtract & & {\tt RSB} & Reverse Subtract\\
@@ -142,25 +163,33 @@ ALU operations can perform only on the registers or immediate values. The genera
 {\tt EOR} & Exclusive OR & & {\tt ORR} & OR\\
 {\tt CMP} & Compare & & {\tt CMN} & Compare NOT\\
 \end{tabular}
+\end{center}
+
 \textbf{2. Data transfer operations}\\
+
 These instructions are useful for loading data from memory({\tt LDR}) and storing back to memory({\tt STR}). ISA supports four addressing modes: \textit{Register addressing, Pre-index addressing, Pre-index addressing with write-back and Post-index addressing with write-back}. Load and store instructions have several versions to allow features including transfering a byte, multiple transfer etc. Multiple transfer instructions are available for faster transfer to/from successive memory locations.\\
+
 \textbf{3. Branch operations}\\
 There are multiple ways to branch in ARMv7-R including {\tt B} for relative branching, {\tt BL} for linked branching(during subroutines) or modifying the PC register. Static and dynamic branch prediction are supported by the ISA, along with a return stack consisting of 4-entry LIFO buffer. Direct and indirect branches can be used where indirect branching results in lesser accuracy for branch prediction.\\
+
 \textbf{4. SIMD/saturation operations}\\
 The 32-bit width of the system can be effectively used by packing,unpacking and operating on 8-bit or 16-bit data using SIMD commands. Saturation arithmetic is also supported for more accurate calculations during overflow conditions.\\
+
 \textbf{5. Miscellaneous instructions}\\
 These instructions are for general maintenance of the processor, co-processor, cache preload etc.
-\begin{tabular}{l l}
+\begin{center}
+	\begin{tabular}{l l}
 {\tt CDP} & Initiate co-processor data processing operation\\
 {\tt MRC/MCR} & Move to/from ARM register and co-processor register\\
 {\tt LDC/STC} & Load/store co-processor register\\
 {\tt MRRC/MCCR} & Multiple register transfers\\
 {\tt LDCL/STCL} & Multiple load/store for co-processor\\
 \end{tabular}
+\end{center}
 \subsection{Cortex R5: Instruction Format}
 The ARMv7 instruction format follows a general allocation scheme. The [31:28] bits are for conditional execution while [27:25] bits select the class of the instruction. Each class has its unique bit arrangement and it is further specialized for each instruction depending on the operands. It can be seen that the register addresses and immediate values occur mostly at the same location throughout the instruction set to allow simpler decoding hardware.
 \begin{figure}[H]
-\center
+\centering
 \includegraphics[width=0.90\textwidth]{figures/CortexFormatGen.jpg}
 \caption{{\small \textit{General format of an ARMv7-R instruction}}\cite{ARMref}}
 \includegraphics[width=0.90\textwidth]{figures/CortexLDR.jpg}
@@ -188,14 +217,11 @@ There is a system control coprocessor as the controller in cortex-R5 implementat
 
 
 \subsection{Intel Core i3-8300 Processor}
-The internal design of an intel core i3 8300 is very advanced and complicated. It is CISC based microarchitecture called 'Coffee Lake'.  The actual size of a data path is 64 bits. Three levels of caches have been implemented inside it for better performance. Uni-processor configuration is used with four CPU cores and threads in the design. This is pipelined. The focus of the pipelining is to reduce power consumption and enhance overall performance. The coffee lake's pipeline is the same as intel's sky lake pipelining strategies. So, it is embedded in additional parallelism for achieving its performance. The pipeline can be split into three zones: the \textbf{\textit{front-end}}, \textit{\textbf{execution}}, and the \textbf{\textit{subsystem for memory}}. By encoding instructions, the front end is supposed to feed the back end with an appropriate stream of operations that it collects from memory. There are two major routes to the front-end: the micro-operations($\mu$OPs) cache route and the legacy path. The legacy path is the regular path by which x86 instructions of variable length are extracted, queued, and finally decoded into shorter fixed-length $\mu$OPs from the Level 1 instruction cache. The alternative and much more fitting solution is the cache route of $\mu$OPs in which a cache containing decoded $\mu$OPs receives a hit that explicitly passes the $\mu$OPs to the decode list.\\
+The internal design of an intel core i3 8300 is very advanced and complicated. It is CISC based microarchitecture called 'Coffee Lake'.  The actual size of a data path is 64 bits. Three levels of caches have been implemented inside it for better performance. Uni-processor configuration is used with four CPU cores and threads in the design. This is pipelined. The focus of the pipelining is to reduce power consumption and enhance overall performance. The coffee lake's pipeline is the same as intel's sky lake pipelining strategies. So, it is embedded in additional parallelism for achieving its performance. The pipeline can be split into three zones: the \textbf{\textit{front-end}}, \textit{\textbf{execution}}, and the \textbf{\textit{subsystem for memory}}(refer figure \ref{intelcore}).\\
 
-\begin{wrapfigure}[15]{r}{3.7cm}
-	\includegraphics[scale= 0.05]{figures/intuarch}
-	\caption{$\mu$arch: of Intel Core-i3 8300}
-\end{wrapfigure}
-The reorder buffer is visited at the back end by a micro-operation. This is where the register is reserved, renamed, and deleted. At this stage, several other optimizations are also carried out. The $\mu$OPs are forwarded to the unified scheduler from the reorder buffer. There are a few escape ports in the scheduler, each of which is connected to a set of distinct execution modules. Some units can perform basic ALU operations, others can multiply and divide, with some units, such as independent vector operations, capable of more complicated operations. The scheduler is responsible for the queuing of the $\mu$OPs to the relevant port so that the appropriate system will execute them.
-Both $\mu$OPs deal with memory access, load \& store access. Those that can perform the memory operation would be sent to the dedicated scheduling ports. Store operations go to the buffer of the store, which is also able to forward if required. Mostly, load operations come from a load buffer.  According to that, the internal design consists of three major sub designs. These are focused on the following improvements,
+By encoding instructions, the front end is supposed to feed the back end with an appropriate stream of operations that it collects from memory. There are two major routes to the front-end: the micro-operations($\mu$OPs) cache route and the legacy path. The legacy path is the regular path by which x86 instructions of variable length are extracted, queued, and finally decoded into shorter fixed-length $\mu$OPs from the Level 1 instruction cache. The alternative and much more fitting solution is the cache route of $\mu$OPs in which a cache containing decoded $\mu$OPs receives a hit that explicitly passes the $\mu$OPs to the decode list.\\
+
+The reorder buffer is visited at the back end by a micro-operation. This is where the register is reserved, renamed, and deleted. At this stage, several other optimizations are also carried out. The $\mu$OPs are forwarded to the unified scheduler from the reorder buffer. There are a few escape ports in the scheduler, each of which is connected to a set of distinct execution modules. Some units can perform basic ALU operations, others can multiply and divide, with some units, such as independent vector operations, capable of more complicated operations. The scheduler is responsible for the queuing of the $\mu$OPs to the relevant port so that the appropriate system will execute them. Both $\mu$OPs deal with memory access, load \& store access. Those that can perform the memory operation would be sent to the dedicated scheduling ports. Store operations go to the buffer of the store, which is also able to forward if required. Mostly, load operations come from a load buffer.  According to that, the internal design consists of three major sub designs. These are focused on the following improvements,
 
  \begin{enumerate}[\hspace{1cm}1.]
  	\item \textbf{	Front end}
@@ -371,7 +397,7 @@ In a multitasking system, the task currently being executed must not affect the 
 
 \subsection{Intel Core i3-8300 Processor}
 %18.7 COUNTING CLOCKS
-In coffee lake $\mu$architecture the processor is divided into several \textbf{\textit{Clock Domains}} where each part maintains a different clock frequency which is applicable only to that part. All of these frequencies are some multiple of what is known as \textit{Base Clock} which acts only as a reference for other clock domains\cite{Skylake} . Cache memories, their related clock domains, latency and bandwidths are as follows. In addition to that system's DRAMs are operated under the \textit{Memory clock} domain and are capable of transferring data at the rate of 8 bytes per cycle per channel\cite{Coffee}(Core i3-8300 Processor is dual channel as mentioned previously).
+In coffee lake $\mu$architecture the processor is divided into several \textbf{\textit{Clock Domains}} where each part maintains a different clock frequency which is applicable only to that part. All of these frequencies are some multiple of what is known as \textit{Base Clock} which acts only as a reference for other clock domains\cite{Kaby},\cite{Skylake}. Cache memories, their related clock domains, latency and bandwidths are as follows. In addition to that system's DRAMs are operated under the \textit{Memory clock} domain and are capable of transferring data at the rate of 8 bytes per cycle per channel\cite{Coffee}(Core i3-8300 Processor is dual channel as mentioned previously).
 
  \begin{table}[!h]
 	\centering
@@ -397,15 +423,16 @@ In Arm Cortex-R5 Processors there is \textbf{\textit{only one clock}} input(\tex
 
 \vspace{1cm}\hrule
 
-\section{Comaprison}
+\section{Comparison}
 
-Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, favouring four-byte operations, while intel i3 8300 is using intel’s coffee lake architecture which uses 64bits data paths. Armv-7r is reduced instruction set computing (RISC) based digital logic design and the i3 8300 is complex instruction computing (CISC) based. Simple instructions are operated only on registers and there is a lot of general-purpose registers in cortex-R5. Armv-7r is allowable only read and store with the main memory. The silicon cost is very low, and the power consumption is also very low. The number of general-purpose registers is less in i3 8300 processor and directly operate with main memory as well, while complex instructions are executed in a single clock cycle. There is significant amount of digital logics to manipulate such behaviour. The ALU is directly connected with its 32bits registers and all logical and mathematical operations are manipulated in Cortex-R5. The ALU of i3 8300 is capable of manipulating 64bits numbers and digital logics.  Like other RISC based architectures, this is explicitly fast and widely used in embedded processors. There is a well-known saying that intel architecture is like an American muscle car. It costs more and power-hungry.\\
+The two processors have some significant differences. Intel Core i3-8300 is a low-performance processor designed for general purpose computing while the ARM Cortex-R5 is a mid-performance processor specialized for real-time embedded applications and digital signal processing tasks. Apart from that the underlying ISA and micro-architecture also has differences as they follow RISC or CISC principles. Cortex-R5 has an implementation that is closer to hardware resulting in higher clock speeds, mostly single clock-cycle operations, shorter and less-vivid instructions and a simpler assembly language. Core-i3 processor has a vast instruction set that has advanced functionality where some instructions can take several clock cycles to execute.\\
 
+Cortex-R5 uses armv-7r architecture which has native 32bits data paths, favoring four-byte operations, while intel i3 8300 is using Intel’s coffee lake architecture which uses 64bits data paths. Armv-7r is a reduced instruction set computing (RISC) based digital logic design and the i3 8300 is complex instruction computing (CISC) based. Simple instructions are operated only on registers and there is a lot of general-purpose registers in cortex-R5. Armv-7r is allowable only read and store with the main memory. The silicon cost is very low, and the power consumption is also very low. The number of general-purpose registers is less in i3 8300 processor and directly operate with main memory as well, while complex instructions are executed in a single clock cycle. There is significant amount of digital logics to manipulate such behavior. The ALU is directly connected with its 32bits registers and all logical and mathematical operations are manipulated in Cortex-R5. The ALU of i3 8300 is capable of manipulating 64bits numbers and digital logics.  Like other RISC based architectures, this is explicitly fast and widely used in embedded processors. There is a well-known saying that intel architecture is like an American muscle car. It costs more and power-hungry.\\
 
-
+Given tow processors implement two distinct memory system architectures which leads them to have two different memory hierarchies. Intel Core i3-8300 processors implement \textit{\textbf{Virtual Memory System Architecture}}(VMSA) with \textit{Translation-Lookaside Buffers}(TLBs) while Arm Cortex-R5 processors implement \textit{\textbf{Protected Memory System Architecture}}(PMSA) which is based on a \textit{Memory Protection Unit}(MPU). Additionally there are strong differences in cache memory organization as well. In Intel Core i3-8300 processor there are 4 levels of cache while there is only L1 cache  in the Arm Cortex-R5 processor since L2 cache is optional. The rest of the main differences are summarized in the following table.\\ 
 
 {\footnotesize \textit{Consider these abbreviations to refer table},
-	D-\textit{Data}, I-\textit{Instruction}, WB-\textit{Write-back}, WT-\textit{Write-through} U-\textit{Unified}, S-\textit{Shared}, SA-\textit{Set Associative}}
+	D-\textit{Data}, I-\textit{Instruction}, WB-\textit{Write-back}, WT-\textit{Write-through} U-\textit{Unified}, S-\textit{Shared}, SA-\textit{Set Associative}}\\
 
 \begin{table}[!h]
 	\centering
@@ -417,12 +444,12 @@ Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, fav
 		& & Includes optional bytes\\
 		Instruction complexity & Simple instructions & Complex instructions\\
 		& Close to hardware & Enhanced functionality\\
-		Addressing modes supported & Simple & Complex modes
+		Addressing modes supported & Simple Modes & Complex Modes\\
 		& Register direct and displacement & Include bases, scales and offsets\\
 		Micro Architecture &ARMv7r&Coffee Lake($8^{th}$ Gen: Intel)\\
 		Digital logic design&	Comparably simple	&Complex\\
 		Silicon cost&	Low	&High\\
-		Operation	&Only on registers&	On registers \& directly on memory as well\\
+		Operation	&Only on registers&	On registers \& Directly on memory \\
 		Data paths&	32 bits	&64 bits\\
 
 		Number of Cores& Single/Dual(Configurable)&4\\
@@ -437,14 +464,12 @@ Cortex-R5 is using armv-7r architecture which uses native 32bits data paths, fav
 		Primary(physical) DRAM& 4GB&Upto 64GB of DDR4-2400\\
 		ECC on Memories& Available& Available\\
 		Clock Domains& Single Clock Input(CLKIN)&Multiple Clock Domains\\
-
-
 		\hline\hline
 	\end{tabular}
-	\caption{Key differences in two processors}
+	\caption{Key differences in the two processors}
 \end{table}
 
-The two processors have some significant differences. Intel Core i3-8300 is a low-performance processor designed for general purpose computing while the ARM Cortex-R5 is a mid-performance processor specialized for real-time embedded applications and digital signal processing tasks. Apart from that the underlying ISA and micro-architecture also has differences as they follow RISC or CISC principles. Cortex-R5 has an implementation that is closer to hardware resulting in higher clock speeds, mostly single clock-cycle operations, shorter and less-vivid instructions and a simpler assembly language. Core-i3 processor has a vast instruction set that has advanced functionality where some instructions can take several clock cycles to execute.
+
 
 
 %Arm Cortex-R5 Processor Intel Core i3-8300 Processor
@@ -453,14 +478,14 @@ The two processors have some significant differences. Intel Core i3-8300 is a lo
 %\paragraph{Micro-Architecture (Data Path and the Controller)}
 %\paragraph{ALU functions}
 %
-%\paragraph{Cache Memory and Memory Interfacing} In the given two processors there are strong differences in cache memory organization. In Intel Core i3-8300 Processor there are 4 levels of cache while there is only L1 cache  in the Arm Cortex-R5 Processor since L2 cache is optional.
+%\paragraph{Cache Memory and Memory Interfacing} 
 %
 %\paragraph{Timing related to Memory}
 
 
-\vspace{1cm}\hrule
+\pagebreak
 \bibliographystyle{plain}
-\scriptsize
+\small
 \bibliography{reference}
 %
 \end{document}

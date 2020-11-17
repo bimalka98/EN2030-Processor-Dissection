@@ -17,47 +17,48 @@ Warning--to sort, need author or key in howstuffworks
 Warning--to sort, need author or key in smartcache
 Warning--to sort, need author or key in crspg
 Warning--to sort, need author or key in crtrm
+Warning--to sort, need author or key in Kaby
 Warning--to sort, need author or key in Skylake
 Warning--to sort, need author or key in iaorm
-You've used 16 entries,
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            557 strings with 5983 characters,
-and the built_in function-call counts, 2924 in all, are:
-= -- 266
-> -- 44
+            566 strings with 6602 characters,
+and the built_in function-call counts, 3149 in all, are:
+= -- 299
+> -- 45
 < -- 1
-+ -- 27
++ -- 28
 - -- 10
-* -- 118
-:= -- 342
-add.period$ -- 29
-call.type$ -- 16
-change.case$ -- 53
+* -- 123
+:= -- 377
+add.period$ -- 37
+call.type$ -- 17
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 128
-empty$ -- 386
+cite$ -- 32
+duplicate$ -- 135
+empty$ -- 409
 format.name$ -- 10
-if$ -- 708
+if$ -- 766
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 17
 missing$ -- 1
-newline$ -- 64
+newline$ -- 74
 num.names$ -- 4
-pop$ -- 131
+pop$ -- 138
 preamble$ -- 1
-purify$ -- 37
+purify$ -- 39
 quote$ -- 0
-skip$ -- 147
+skip$ -- 144
 stack$ -- 0
-substring$ -- 113
-swap$ -- 26
+substring$ -- 118
+swap$ -- 27
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
-warning$ -- 14
+type$ -- 68
+warning$ -- 15
 while$ -- 7
-width$ -- 18
-write$ -- 112
-(There were 14 warnings)
+width$ -- 19
+write$ -- 131
+(There were 15 warnings)
