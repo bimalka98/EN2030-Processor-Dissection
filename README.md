@@ -20,6 +20,10 @@ microarchitecture and manufactured using 14nm process. This processor is develop
 processor with four cores, 4 threads, 3.7GHz base frequency, 8MB Intel Smart Cache and 62 W Thermal Design
 Power(TDP).
 
+![i3](https://github.com/bimalka98/EN2030-Processor-Dissection/blob/master/Source%20Files/figures/int3.JPG)
+
 ### *ARM Cortex R5*
 Cortex-R5 is a 32-bit processor by Arm Holdings, optimized for embedded real-time mission critical applications. The
 processor was introduced in 2011.
+
+![r5](https://github.com/bimalka98/EN2030-Processor-Dissection/blob/master/Source%20Files/figures/r5.JPG)
