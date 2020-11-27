@@ -7,6 +7,8 @@ An in-depth investigation of *Intel Core i3-8300* and *ARM Cortex R5* processors
 * Cache Memory and Memory Interfacing
 * Timing related to Memory
 
+**Click [Here](https://github.com/bimalka98/EN2030-Processor-Dissection/blob/master/Group32_processor_dissection_180609_180616_180631.pdf) to view the report.**
+
 ## Composed by,
 1. [SIRITHUNGA M.R.A.](https://github.com/SIRITHUNGA98)
 2. [SOMARATHNE P.M.P.H.](https://github.com/PamudithaSomarathne)
